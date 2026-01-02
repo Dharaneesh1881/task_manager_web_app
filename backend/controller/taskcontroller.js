@@ -1,4 +1,4 @@
-import taskmodel from "../models/taskmodel";
+import taskmodel from "../models/taskmodel.js";
 
 export async function createtask(req,res){
     const {title,description,priority,status,dueDate} = req.body;

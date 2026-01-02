@@ -1,4 +1,8 @@
-export default function auth(req,res,next){
+import jwt from "jsonwebtoken";
+import usermodel from "../models/usermodel.js";
+import "dotenv/config";
+
+export default async function auth(req, res, next) {
     const authheader = req.headers.authorization;
     if(!authheader || !authheader.startsWith("Bearer ")){
         return res.status(401).json({success:false,message:"unauthorized"});
@@ -6,7 +10,7 @@ export default function auth(req,res,next){
     const token = authheader.split(" ")[1];
     try{
         const decoded = jwt.verify(token,process.env.JWT_SECRET);
-        const user = usermodel.findById(decoded.id).select("-password");
+        const user = await usermodel.findById(decoded.id).select("-password");
         if(!user){
             return res.status(401).json({success:false,message:"unauthorized"});
         }

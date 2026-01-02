@@ -3,6 +3,7 @@ import cors from "cors";
 import "dotenv/config";
 import {connectDB} from "../config/db.js";
 import router from "../routes/userroute.js";
+import taskrouter from "../routes/taskroute.js";
 
 
 
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 connectDB();
 
 app.use("/api/users",router);
+app.use("/api/taasks",taskrouter);
 
 app.get("/",(req,res) => {
     res.send("API is running...");

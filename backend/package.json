@@ -1,5 +1,5 @@
 {
-  "type" : "module",
+  "type": "module",
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
@@ -18,6 +18,7 @@
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
+    "lucide-react": "^0.562.0",
     "mongoose": "^9.1.0",
     "nodemon": "^3.1.11",
     "validator": "^13.15.26"

@@ -134,10 +134,12 @@ const Dashboard = ({ filter: pageFilter }) => {
     const filters = ["All", "Today", "Week", "High", "Medium", "Low"];
 
     const filteredTasks = tasks.filter(task => {
-        if (pageFilter === "pending" && task.status === "completed") return false;
+        if (pageFilter === "pending" && task.status !== "pending") return false;
+        if (pageFilter === "in-process" && task.status !== "in-progress") return false;
         if (pageFilter === "completed" && task.status !== "completed") return false;
 
         if (activeFilter === "All") return true;
+        if (activeFilter === "In Progress") return task.status === "in-progress";
         if (activeFilter === "High") return task.priority === "high";
         if (activeFilter === "Medium") return task.priority === "medium";
         if (activeFilter === "Low") return task.priority === "low";
@@ -178,7 +180,7 @@ const Dashboard = ({ filter: pageFilter }) => {
                             <div className="w-8 h-8 rounded-lg bg-mischka-200 flex items-center justify-center">
                                 <LayoutGrid className="w-5 h-5 text-mischka-600" />
                             </div>
-                            {pageFilter ? (pageFilter.charAt(0).toUpperCase() + pageFilter.slice(1) + " Tasks") : "Task Overview"}
+                            {pageFilter ? (pageFilter === "in-process" ? "In Process Tasks" : pageFilter.charAt(0).toUpperCase() + pageFilter.slice(1) + " Tasks") : "Task Overview"}
                         </h2>
                         <p className="text-mischka-600 font-medium">Manage your tasks efficiently</p>
                     </div>

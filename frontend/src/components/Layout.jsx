@@ -5,7 +5,8 @@ import {
     Clock,
     CheckCircle2,
     Zap,
-    ChevronDown
+    ChevronDown,
+    Activity
 } from "lucide-react";
 
 const Layout = ({ user, children }) => {
@@ -14,6 +15,7 @@ const Layout = ({ user, children }) => {
     const navigations = [
         { name: "Dashboard", path: "/", icon: LayoutDashboard },
         { name: "Pending", path: "/pending", icon: Clock },
+        { name: "In Process", path: "/in-process", icon: Activity },
         { name: "Completed", path: "/completed", icon: CheckCircle2 },
     ];
 

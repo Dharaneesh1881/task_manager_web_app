@@ -58,6 +58,7 @@ const AppContent = () => {
                 <Routes>
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/pending" element={<Dashboard filter="pending" />} />
+                  <Route path="/in-process" element={<Dashboard filter="in-process" />} />
                   <Route path="/completed" element={<Dashboard filter="completed" />} />
                   <Route path="/settings" element={<Settings />} />
                   <Route path="*" element={<Navigate to="/" replace />} />

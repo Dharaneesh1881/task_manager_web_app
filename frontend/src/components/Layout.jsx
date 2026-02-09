@@ -24,9 +24,6 @@ const Layout = ({ user, children }) => {
                 <div className="p-6">
                     {/* USER PROFILE SHORTCUT */}
                     <div className="flex items-center gap-3 mb-10">
-                        <div className="w-12 h-12 rounded-full bg-mischka-600 flex items-center justify-center text-white font-bold shadow-lg shadow-mischka-200">
-                            {user?.name?.[0]?.toUpperCase() || "U"}
-                        </div>
                         <div>
                             <h2 className="text-[15px] font-bold text-mischka-900 leading-tight">
                                 Hey, {user?.name || "User"}
@@ -81,7 +78,7 @@ const Layout = ({ user, children }) => {
                                     </p>
                                 </div>
                                 <div className="relative">
-                                    <div className="w-10 h-10 rounded-xl bg-amber-400 flex items-center justify-center text-white font-bold shadow-lg shadow-mischka-100">
+                                    <div className="w-10 h-10 rounded-xl bg-mischka-600 flex items-center justify-center text-white font-bold shadow-lg shadow-mischka-100">
                                         {user?.name?.[0]?.toUpperCase() || "U"}
                                     </div>
                                     <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-500 border-2 border-mischka-100 rounded-full"></div>

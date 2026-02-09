@@ -27,7 +27,7 @@ const Login = () => {
         <div className="w-full max-w-md p-10 bg-mischka-100 rounded-[40px] shadow-2xl shadow-mischka-200 border border-mischka-200">
             <div className="flex flex-col items-center mb-10">
                 <div className="mb-6 w-24 h-24 rounded-full bg-mischka-50 border-4 border-mischka-200 shadow-xl shadow-mischka-300 flex items-center justify-center overflow-hidden">
-                    <img src="/logo.png" alt="Chirp Logo" className="w-full h-full object-cover p-2" />
+                    <img src="/logo.png" alt="Chirp Logo" className="w-full h-full object-cover" />
                 </div>
                 <h2 className="text-3xl font-black text-mischka-900 mb-2 uppercase italic tracking-tighter">CHIRP</h2>
                 <p className="text-mischka-600 font-medium">Log in to continue your progress</p>
@@ -58,7 +58,7 @@ const Login = () => {
                 <div className="space-y-2">
                     <div className="flex justify-between items-center ml-1">
                         <label className="text-[13px] font-bold text-mischka-500 uppercase tracking-widest">Password</label>
-                        <button type="button" className="text-[12px] font-bold text-mischka-600 hover:underline">Forgot?</button>
+                        <button type="button" className="text-[12px] font-bold text-mischka-600 hover:underline"></button>
                     </div>
                     <div className="relative group">
                         <Lock className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-mischka-400 group-focus-within:text-mischka-900 transition-colors" />

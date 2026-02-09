@@ -30,8 +30,8 @@ const SignUp = () => {
     return (
         <div className="w-full max-w-md p-10 bg-mischka-100 rounded-[40px] shadow-2xl shadow-mischka-200 border border-mischka-200">
             <div className="flex flex-col items-center mb-10">
-                <div className="mb-6">
-                    <img src="/logo.png" alt="Chirp Logo" className="w-20 h-20 object-contain" />
+                <div className="mb-6 w-24 h-24 rounded-full bg-mischka-50 border-4 border-mischka-200 shadow-xl shadow-mischka-300 flex items-center justify-center overflow-hidden">
+                    <img src="/logo.png" alt="Chirp Logo" className="w-full h-full object-cover" />
                 </div>
                 <h2 className="text-3xl font-black text-mischka-900 mb-2 uppercase italic tracking-tighter">CHIRP</h2>
                 <p className="text-mischka-600 font-medium">Join CHIRP and stay productive</p>

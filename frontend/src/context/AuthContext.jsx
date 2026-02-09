@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
-    const API_URL = "http://localhost:4000/api/users";
+    const API_URL = `${import.meta.env.VITE_API_BASE_URL}/api/users`;
 
     useEffect(() => {
         if (token) {

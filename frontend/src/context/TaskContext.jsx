@@ -8,7 +8,7 @@ export const TaskProvider = ({ children }) => {
     const [loading, setLoading] = useState(false);
     const { token } = useAuth();
 
-    const API_URL = "http://localhost:4000/api/tasks";
+    const API_URL = `${import.meta.env.VITE_API_BASE_URL}/api/tasks`;
 
     const fetchTasks = async () => {
         if (!token) return;

@@ -210,8 +210,8 @@ const Dashboard = ({ filter: pageFilter }) => {
                                     key={filter}
                                     onClick={() => setActiveFilter(filter)}
                                     className={`px-5 py-2 text-[13px] font-bold rounded-xl transition-all ${activeFilter === filter
-                                            ? "bg-mischka-600 text-white shadow-sm ring-1 ring-mischka-200"
-                                            : "text-mischka-500 hover:text-mischka-900"
+                                        ? "bg-mischka-600 text-white shadow-sm ring-1 ring-mischka-200"
+                                        : "text-mischka-500 hover:text-mischka-900"
                                         }`}
                                 >
                                     {filter}
@@ -227,12 +227,12 @@ const Dashboard = ({ filter: pageFilter }) => {
                     ) : filteredTasks.length > 0 ? (
                         <div className="space-y-4">
                             {filteredTasks.map((task) => (
-                                <div key={task._id} className="group p-5 rounded-3xl border border-mischka-200/50 hover:border-mischka-300 hover:bg-mischka-200/20 transition-all flex items-center gap-6">
+                                <div key={task._id} className="group p-5 rounded-3xl border border-mischka-200 bg-mischka-200/40 hover:bg-mischka-200/60 transition-all flex items-center gap-6 shadow-sm hover:shadow-md">
                                     <button
                                         onClick={() => handleToggleStatus(task)}
                                         className={`w-8 h-8 rounded-full border-2 flex items-center justify-center transition-all ${task.status === "completed"
-                                                ? "bg-mischka-600 border-mischka-600 text-white"
-                                                : "border-mischka-200 text-transparent hover:border-mischka-400"
+                                            ? "bg-mischka-600 border-mischka-600 text-white"
+                                            : "border-mischka-200 text-transparent hover:border-mischka-400"
                                             }`}
                                     >
                                         <CheckCircle2 className="w-5 h-5" />
@@ -247,8 +247,8 @@ const Dashboard = ({ filter: pageFilter }) => {
 
                                     <div className="flex items-center gap-4">
                                         <span className={`px-4 py-1.5 rounded-full text-[11px] font-black uppercase tracking-wider ${task.priority === "high" ? "bg-rose-50 text-rose-500" :
-                                                task.priority === "medium" ? "bg-orange-50 text-orange-500" :
-                                                    "bg-emerald-50 text-emerald-500"
+                                            task.priority === "medium" ? "bg-orange-50 text-orange-500" :
+                                                "bg-emerald-50 text-emerald-500"
                                             }`}>
                                             {task.priority}
                                         </span>

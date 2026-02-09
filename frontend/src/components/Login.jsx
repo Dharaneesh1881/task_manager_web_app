@@ -30,7 +30,7 @@ const Login = () => {
                     <img src="/logo.png" alt="Chirp Logo" className="w-full h-full object-cover" />
                 </div>
                 <h2 className="text-3xl font-black text-mischka-900 mb-2 uppercase italic tracking-tighter">CHIRP</h2>
-                <p className="text-mischka-600 font-medium">Log in to continue your progress</p>
+                <p className="text-mischka-600 font-medium">Log in to continue </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">

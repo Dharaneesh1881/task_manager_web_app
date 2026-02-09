@@ -1,82 +1,81 @@
-import React, { useEffect, useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider, useAuth } from "./context/AuthContext.jsx";
+import { TaskProvider } from "./context/TaskContext.jsx";
 
-import Layout from "../components/Layout.jsx";
-import Login from "../components/Login.jsx";
-import SignUp from "../components/SignUp.jsx";
+import Layout from "./components/Layout.jsx";
+import Login from "./components/Login.jsx";
+import SignUp from "./components/SignUp.jsx";
+import Dashboard from "./pages/dashboard.jsx";
+import Settings from "./pages/settings.jsx";
 
-const App = () => {
-  const navigate = useNavigate();
+const ProtectedRoute = ({ children }) => {
+  const { token, loading } = useAuth();
 
-  // Load user from localStorage on first render
-  const [currentUser, setCurrentUser] = useState(() => {
-    const stored = localStorage.getItem("currentUser");
-    return stored ? JSON.parse(stored) : null;
-  });
+  if (loading) {
+    return (
+      <div className="flex h-screen items-center justify-center bg-mischka-50">
+        <div className="h-10 w-10 animate-spin rounded-full border-4 border-mischka-600 border-t-transparent"></div>
+      </div>
+    );
+  }
 
-  // Sync user to localStorage
-  useEffect(() => {
-    if (currentUser) {
-      localStorage.setItem("currentUser", JSON.stringify(currentUser));
-    } else {
-      localStorage.removeItem("currentUser");
-    }
-  }, [currentUser]);
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
 
-  // LOGIN / SIGNUP HANDLER
-  const handleAuthSubmit = (data) => {
-    const user = {
-      email: data.email,
-      name: data.name || "User",
-      avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(data.name || 'User')}&background=random`
-    };
+  return children;
+};
 
-    setCurrentUser(user);
-    navigate("/", { replace: true });
-  };
-
-  // LOGOUT HANDLER
-  const handleLogout = () => {
-    setCurrentUser(null);
-    navigate("/login", { replace: true });
-  };
+const AppContent = () => {
+  const { logout, user } = useAuth();
 
   return (
     <Routes>
-      {/* LOGIN */}
       <Route
         path="/login"
         element={
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-            <Login
-              onSubmit={handleAuthSubmit}
-              onSwitchMode={() => navigate("/signup")}
-            />
+          <div className="fixed inset-0 flex items-center justify-center bg-mischka-50">
+            <Login />
           </div>
         }
       />
-
-      {/* SIGNUP */}
       <Route
         path="/signup"
         element={
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-            <SignUp
-              onSubmit={handleAuthSubmit}
-              onSwitchMode={() => navigate("/login")}
-            />
+          <div className="fixed inset-0 flex items-center justify-center bg-mischka-50">
+            <SignUp />
           </div>
         }
       />
 
-      {/* PROTECTED APP */}
       <Route
         path="/*"
         element={
-          <Layout user={currentUser} onLogout={handleLogout} />
+          <ProtectedRoute>
+            <TaskProvider>
+              <Layout user={user} onLogout={logout}>
+                <Routes>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/pending" element={<Dashboard filter="pending" />} />
+                  <Route path="/completed" element={<Dashboard filter="completed" />} />
+                  <Route path="/settings" element={<Settings />} />
+                  <Route path="*" element={<Navigate to="/" replace />} />
+                </Routes>
+              </Layout>
+            </TaskProvider>
+          </ProtectedRoute>
         }
       />
     </Routes>
+  );
+};
+
+const App = () => {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   );
 };
 

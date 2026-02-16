@@ -52,7 +52,7 @@ const SignUp = () => {
                             type="text"
                             required
                             className="w-full bg-mischka-50 border-2 border-transparent focus:border-mischka-300 focus:bg-white rounded-2xl py-4 pl-14 pr-6 text-sm font-semibold transition-all outline-none text-mischka-900"
-                            placeholder="John Doe"
+                            placeholder="name"
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         />
